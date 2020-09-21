@@ -81,10 +81,13 @@
 #### Deploying Nginx pods on Kubernetes
 1. Deploying Nginx Container
     ```sh
-    kubectl run sample-nginx --image=nginx --replicas=2 --port=80
+    # kubectl run sample-nginx --image=nginx --replicas=2 --port=80
     # kubectl run simple-devops-project --image=yankils/simple-devops-image --replicas=2 --port=8080
-    kubectl get pods
-    kubectl get deployments
+    kubectl create sample-nginx --image=nginx
+    kubectl scale deployment/sample-nginx --replicas=2
+
+    kubectl get pods -o wide
+    kubectl get deployments -o wide
    ```
 
 1. Expose the deployment as service. This will create an ELB in front of those 2 containers and allow us to publicly access them.
